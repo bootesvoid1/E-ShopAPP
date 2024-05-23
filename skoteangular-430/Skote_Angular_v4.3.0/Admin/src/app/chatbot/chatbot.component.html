@@ -1,0 +1,17 @@
+<div class="chatbot-container" (click)="toggleChatbox()" [class.expanded]="expanded">
+  <div class="robot-head">🤖</div>
+  <div class="chatbox">
+     <div class="header">
+       <button class="close-button" (click)="toggleChatbox()">X</button>
+     </div>
+     <p class="welcome-message" *ngIf="!userInput">{{ welcomeMessage }}</p>
+     <div class="user-input" *ngIf="userInput">
+       <p>{{ userInput }}</p>
+       <div *ngIf="showTypingDots" class="typing-dots"></div>
+     </div>
+     <div class="input-area">
+       <textarea [(ngModel)]="currentInput" *ngIf="!showTypingDots" placeholder="Type your question..." (keyup.enter)="submitQuestion()"></textarea>
+       <button class="submit-button" *ngIf="currentInput" (click)="submitQuestion()">➔</button>
+     </div>
+  </div>
+ </div>
